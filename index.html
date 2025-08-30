@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hiroマーカー テスト</title>
+    <title>AR 動画テスト</title>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   </head>
@@ -13,17 +13,27 @@
       renderer="logarithmicDepthBuffer: true;"
       arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
       
-      <!-- 動画を読み込む -->
+      <!-- 動画の読み込み -->
       <a-assets>
-        <video id="nakoVideo" src="./Nako_fixed.mp4" autoplay loop playsinline webkit-playsinline muted></video>
+        <video id="nakoVideo" src="Nako_fixed.mp4" autoplay loop muted playsinline webkit-playsinline></video>
       </a-assets>
 
-      <!-- Hiroマーカーに動画を表示 -->
+      <!-- マーカーに動画を表示 -->
       <a-marker preset="hiro">
         <a-video src="#nakoVideo" width="2" height="2" rotation="-90 0 0"></a-video>
       </a-marker>
 
       <a-entity camera></a-entity>
     </a-scene>
+
+    <!-- 再生がブロックされた場合に備えてクリックで再生する処理 -->
+    <script>
+      document.body.addEventListener("click", () => {
+        const vid = document.querySelector("#nakoVideo");
+        if (vid.paused) {
+          vid.play();
+        }
+      });
+    </script>
   </body>
 </html>
