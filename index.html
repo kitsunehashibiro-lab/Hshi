@@ -14,9 +14,17 @@
       arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
       
       <!-- 動画の読み込み -->
-      <a-assets>
-        <video id="nakoVideo" src="Nako_fixed.mp4" autoplay loop muted playsinline webkit-playsinline></video>
-      </a-assets>
+      <a-video
+  src="./Nako_fixed.mp4"
+  autoplay="true"
+  muted="true"
+  playsinline
+  webkit-playsinline
+  loop="true"
+  width="2"
+  height="2"
+  rotation="-90 0 0">
+</a-video>
 
       <!-- マーカーに動画を表示 -->
       <a-marker preset="hiro">
